@@ -341,6 +341,16 @@ class HeadlessInterface extends EventEmitter {
 	Users() {
 		return this.RunCommand("users");
 	}
+	/**
+	 * Close the currently focused world
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Close() {
+		return this.RunCommand("close");
+	}
  *
  * @private
  * @class CommandQueue
