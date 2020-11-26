@@ -290,6 +290,17 @@ class HeadlessInterface extends EventEmitter {
 	StartWorldURL(record) {
 		return this.RunCommand(`startWorldURL "${record}"`);
 	}
+	/**
+	 * Start a new world from template
+	 * @param {String} template template
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	StartWorldTemplate(template) {
+		return this.RunCommand(`startWorldTemplate ${template}`);
+	}
  *
  * @private
  * @class CommandQueue
