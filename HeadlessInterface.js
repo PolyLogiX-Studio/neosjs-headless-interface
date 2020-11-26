@@ -470,6 +470,20 @@ class HeadlessInterface extends EventEmitter {
 	GC() {
 		return this.RunCommand("gc");
 	}
+	/**
+	 * Saves the current settings into the original config file
+	 * Usage: SaveConfig(filename) (optional, will save in place without)
+	 * @param {String} [filename]
+	 * @memberof HeadlessInterface
+	 * @instance
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	SaveConfig(filename) {
+		return this.RunCommand(`saveConfig${filename ? " " + filename : ""}`);
+	}
+}
+/**
  *
  * @private
  * @class CommandQueue
