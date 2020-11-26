@@ -404,6 +404,17 @@ class HeadlessInterface extends EventEmitter {
 	Unsilence(user) {
 		return this.RunCommand(`unsilence "${user}"`);
 	}
+	/**
+	 * Ban the given user
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @param {String} user Username
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Ban(user) {
+		return this.RunCommand(`ban "${user}"`);
+	}
  *
  * @private
  * @class CommandQueue
