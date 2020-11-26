@@ -1,0 +1,22 @@
+{
+  "name": "neosjs-headless-interface",
+  "version": "1.0.0",
+  "description": "Headless Interface for NeosVR",
+  "main": "HeadlessInterface.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PolyLogiX-Studio/neosjs-headless-interface.git"
+  },
+  "author": "Ethan Snow",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PolyLogiX-Studio/neosjs-headless-interface/issues"
+  },
+  "peerDependencies": {
+		"@bombitmanbomb/neosjs": "^1.8.0"
+	},
+  "homepage": "https://github.com/PolyLogiX-Studio/neosjs-headless-interface#readme"
+}
