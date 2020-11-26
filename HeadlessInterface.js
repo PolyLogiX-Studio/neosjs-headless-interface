@@ -21,6 +21,11 @@ class HeadlessInterface extends EventEmitter {
 	 * @param {String | 'child_process'} headlessPath
 	 * @param {String} [configPathRelative]
 	 * @param {{SafeReady:1000, Events: false, sessionIdAttempts:15}} [options]
+	 * @example const { HeadlessInterface } = require("neosjs-headless-interface");
+	 * const NeosVR = new HeadlessInterface()
+	 * NeosVR.on("ready", ()=>{
+	 * 	NeosVR.Send("invite bombitmanbomb").then((Response)=>console.log(Response)) // "Invite Sent!"
+	 * })
 	 */
 	constructor(headlessPath, configPathRelative, options) {
 		super();
@@ -111,6 +116,7 @@ class HeadlessInterface extends EventEmitter {
 	 * @readonly
 	 * @instance
 	 * @memberof HeadlessInterface
+	 * @since 1.0.0
 	 */
 	get CanSend() {
 		return this.InternalEvents._events.HeadlessResponse == null;
@@ -122,6 +128,7 @@ class HeadlessInterface extends EventEmitter {
 	 * @readonly
 	 * @instance
 	 * @memberof HeadlessInterface
+	 * @since 1.0.0
 	 */
 	get sessionId() {
 		if (this.State.sessionId) return this.State.sessionId;
@@ -151,6 +158,7 @@ class HeadlessInterface extends EventEmitter {
 	 * @instance
 	 * @returns
 	 * @memberof HeadlessInterface
+	 * @since 1.0.0
 	 */
 	Kill() {
 		return this.NeosVR.kill(0);
@@ -160,6 +168,8 @@ class HeadlessInterface extends EventEmitter {
 	 * @instance
 	 * @param {String} text
 	 * @returns {Promise<String>}
+	 * @since 1.0.0
+	 * @version 1.0.1
 	 */
 	Send(text) {
 		if (this.InternalEvents._events.HeadlessResponse) {
