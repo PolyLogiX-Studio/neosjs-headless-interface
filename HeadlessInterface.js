@@ -437,6 +437,18 @@ class HeadlessInterface extends EventEmitter {
 	Respawn(user) {
 		return this.RunCommand(`respawn "${user}"`);
 	}
+	/**
+	 * Assign a role to the given user
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @param {String} user Username
+	 * @param {String} role UserRole
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Role(user, role) {
+		return this.RunCommand(`role "${user}" "${role}"`);
+	}
  *
  * @private
  * @class CommandQueue
