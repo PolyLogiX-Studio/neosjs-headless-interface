@@ -234,6 +234,16 @@ class HeadlessInterface extends EventEmitter {
 	Invite(user) {
 		return this.RunCommand(`invite "${user}"`);
 	}
+	/**
+	 * List all incoming friend requests
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	FriendRequests() {
+		return this.RunCommand("friendRequests");
+	}
  *
  * @private
  * @class CommandQueue
