@@ -382,6 +382,17 @@ class HeadlessInterface extends EventEmitter {
 	Kick(user) {
 		return this.RunCommand(`kick "${user}"`);
 	}
+	/**
+	 * Silence the given user
+	 * @instance
+	 * @memberof HeadlessInterface
+	 *  @param {String} user Username
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Silence(user) {
+		return this.RunCommand(`silence "${user}"`);
+	}
  *
  * @private
  * @class CommandQueue
