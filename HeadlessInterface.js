@@ -449,6 +449,17 @@ class HeadlessInterface extends EventEmitter {
 	Role(user, role) {
 		return this.RunCommand(`role "${user}" "${role}"`);
 	}
+	/**
+	 * Set a new world access level
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @param {String} accessLevel accessLevel
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	AccessLevel(accessLevel) {
+		return this.RunCommand(`accessLevel "${accessLevel}"`);
+	}
  *
  * @private
  * @class CommandQueue
