@@ -301,6 +301,16 @@ class HeadlessInterface extends EventEmitter {
 	StartWorldTemplate(template) {
 		return this.RunCommand(`startWorldTemplate ${template}`);
 	}
+	/**
+	 * Show the status of the current world
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Status() {
+		return this.RunCommand("status");
+	}
  *
  * @private
  * @class CommandQueue
