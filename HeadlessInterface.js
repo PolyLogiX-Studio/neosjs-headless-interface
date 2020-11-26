@@ -129,11 +129,12 @@ class HeadlessInterface extends EventEmitter {
 	 * @instance
 	 * @memberof HeadlessInterface
 	 * @since 1.0.0
+	 * @version 2.0.0
 	 */
 	get sessionId() {
 		if (this.State.sessionId) return this.State.sessionId;
 		else
-			return this.Send("sessionId").then((sessionId) => {
+			return this.RunCommand("sessionId").then((sessionId) => {
 				if (
 					sessionId != null &&
 					typeof sessionId === "string" &&
