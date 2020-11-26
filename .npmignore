@@ -1,0 +1,9 @@
+.github
+.vscode
+Tests/
+Examples/
+docs/
+.env
+.eslintignore
+.gitconfig
+.documentation.yml
