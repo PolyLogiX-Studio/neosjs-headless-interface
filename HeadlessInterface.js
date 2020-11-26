@@ -211,7 +211,18 @@ class HeadlessInterface extends EventEmitter {
 	Login(user, password) {
 		return this.RunCommand(`login "${user}" "${password}"`);
 }
-
+	/**
+	 * Send a message!
+	 * @instance
+	 * @param {String} user Username to send message to
+	 * @param {String} message Message
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Message(user, message) {
+		return this.RunCommand(`message "${user}" "${message}"`);
+	}
 /**
  *
  * @private
