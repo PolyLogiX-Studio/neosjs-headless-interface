@@ -266,6 +266,19 @@ class HeadlessInterface extends EventEmitter {
 	Worlds() {
 		return this.RunCommand("worlds");
 	}
+	/**
+	 * Focus world
+	 * @param {Number | String} world world name or number
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Focus(world) {
+		return this.RunCommand(
+			`focus ${typeof world === "number" ? world : "\"" + world + "\""}`
+		);
+	}
  *
  * @private
  * @class CommandQueue
