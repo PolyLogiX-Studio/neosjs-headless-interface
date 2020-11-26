@@ -371,6 +371,17 @@ class HeadlessInterface extends EventEmitter {
 	Restart() {
 		return this.RunCommand("restart");
 	}
+	/**
+	 * Kick the given user from the session
+	 * @instance
+	 * @param {String} user Username
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Kick(user) {
+		return this.RunCommand(`kick "${user}"`);
+	}
  *
  * @private
  * @class CommandQueue
