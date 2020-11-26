@@ -321,6 +321,16 @@ class HeadlessInterface extends EventEmitter {
 	SessionURL() {
 		return this.RunCommand("sessionURL");
 	}
+	/**
+	 * Get the ID of the current session
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	SessionID() {
+		return this.RunCommand("sessionID");
+	}
  *
  * @private
  * @class CommandQueue
