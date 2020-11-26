@@ -426,6 +426,17 @@ class HeadlessInterface extends EventEmitter {
 	Unban(user) {
 		return this.RunCommand(`unban "${user}"`);
 	}
+	/**
+	 * Respawn the given user
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @param {String} user Username
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Respawn(user) {
+		return this.RunCommand(`respawn "${user}"`);
+	}
  *
  * @private
  * @class CommandQueue
