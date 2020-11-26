@@ -361,6 +361,16 @@ class HeadlessInterface extends EventEmitter {
 	Save() {
 		return this.RunCommand("save");
 	}
+	/**
+	 * Restart the current world
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Restart() {
+		return this.RunCommand("restart");
+	}
  *
  * @private
  * @class CommandQueue
