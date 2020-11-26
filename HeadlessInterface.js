@@ -279,6 +279,17 @@ class HeadlessInterface extends EventEmitter {
 			`focus ${typeof world === "number" ? world : "\"" + world + "\""}`
 		);
 	}
+	/**
+	 * Start a world with a url
+	 * @param {String} record World Record URL
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	StartWorldURL(record) {
+		return this.RunCommand(`startWorldURL "${record}"`);
+	}
  *
  * @private
  * @class CommandQueue
