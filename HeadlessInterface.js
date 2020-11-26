@@ -460,6 +460,16 @@ class HeadlessInterface extends EventEmitter {
 	AccessLevel(accessLevel) {
 		return this.RunCommand(`accessLevel "${accessLevel}"`);
 	}
+	/**
+	 * Forces a full garbage collection
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	GC() {
+		return this.RunCommand("gc");
+	}
  *
  * @private
  * @class CommandQueue
