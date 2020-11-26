@@ -1,3 +1,11 @@
+/**
+ * @fileoverview Neos.js Plugin - HeadlessInterface
+ * @name neosjs-headless-interface
+ * @author Bitman
+ * @returns {HeadlessInterface}
+ * @see Parent Library: [Neos.js](https://github.com/PolyLogiX-Studio/Neos.js#readme)
+ */
+
 const { EventEmitter } = require("events");
 const path = require("path");
 //const fs = require("fs");
@@ -80,7 +88,8 @@ class HeadlessInterface extends EventEmitter {
 						 * Fires when the headless client is Ready
 						 * @event HeadlessInterface#ready
 						 * @type {String} SessionId
-						 *
+						 * @property {String} sessionId SessionId of the started world
+						 * @memberof HeadlessInterface
 						 */
 						this.emit("ready", sessionId);
 					});
@@ -91,6 +100,8 @@ class HeadlessInterface extends EventEmitter {
 			/**
 			 * @event HeadlessInterface#message
 			 * @type {String}
+			 * @property {String} message Output from NeosClient
+			 * @memberof HeadlessInterface
 			 */
 			this.emit("message", message);
 		});
@@ -98,6 +109,7 @@ class HeadlessInterface extends EventEmitter {
 	/**
 	 * Can the headless client send another command right now?
 	 * @readonly
+	 * @instance
 	 * @memberof HeadlessInterface
 	 */
 	get CanSend() {
@@ -108,6 +120,7 @@ class HeadlessInterface extends EventEmitter {
 	 * Get the Headless Client SessionId
 	 *
 	 * @readonly
+	 * @instance
 	 * @memberof HeadlessInterface
 	 */
 	get sessionId() {
@@ -135,7 +148,7 @@ class HeadlessInterface extends EventEmitter {
 
 	/**
 	 *End the Process
-	 *
+	 * @instance
 	 * @returns
 	 * @memberof HeadlessInterface
 	 */
@@ -144,6 +157,7 @@ class HeadlessInterface extends EventEmitter {
 	}
 	/**
 	 * Send a command to the Headless Client
+	 * @instance
 	 * @param {String} text
 	 * @returns {Promise<String>}
 	 */
@@ -197,4 +211,4 @@ class CommandQueue {
 	}
 	*/
 }
-module.exports = {HeadlessInterface};
+module.exports = { HeadlessInterface };

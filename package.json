@@ -1,22 +1,37 @@
 {
-  "name": "neosjs-headless-interface",
-  "version": "1.0.0",
-  "description": "Headless Interface for NeosVR",
-  "main": "HeadlessInterface.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/PolyLogiX-Studio/neosjs-headless-interface.git"
-  },
-  "author": "Ethan Snow",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/PolyLogiX-Studio/neosjs-headless-interface/issues"
-  },
-  "peerDependencies": {
+	"name": "neosjs-headless-interface",
+	"version": "1.0.1",
+	"description": "Headless Interface for NeosVR",
+	"main": "HeadlessInterface.js",
+	"scripts": {
+		"lint": "prettier --use-tabs --write . && eslint -c .eslintrc.json --fix .",
+		"document": "documentation build HeadlessInterface.js -f html -o docs --config .documentation.yml --sort-order alpha",
+		"prepare": "npm run document && npm run lint"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/PolyLogiX-Studio/neosjs-headless-interface.git"
+	},
+	"author": "Ethan Snow",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/PolyLogiX-Studio/neosjs-headless-interface/issues"
+	},
+	"peerDependencies": {
 		"@bombitmanbomb/neosjs": "^1.8.0"
 	},
-  "homepage": "https://github.com/PolyLogiX-Studio/neosjs-headless-interface#readme"
+	"devDependencies": {
+		"documentation": "^13.1.0",
+		"eslint": "^7.12.1",
+		"prettier": "^2.1.2"
+	},
+	"peerDependenciesMeta": {
+		"@bombitmanbomb/neosjs": {
+			"optional": true
+		}
+	},
+	"os": [
+		"!darwin"
+	],
+	"homepage": "https://github.com/PolyLogiX-Studio/neosjs-headless-interface#readme"
 }
