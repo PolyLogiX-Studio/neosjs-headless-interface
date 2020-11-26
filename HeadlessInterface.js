@@ -199,6 +199,17 @@ class HeadlessInterface extends EventEmitter {
 		this.NeosVR.stdin.write(text + "\n");
 		return response;
 	}
+	/**
+	 * Login to an account
+	 * @param {String} user Username or Email
+	 * @param {String} password Password
+	 * @instance
+	 * @memberof HeadlessInterface
+	 * @since 2.0.0
+	 * @returns {Promise<String>}
+	 */
+	Login(user, password) {
+		return this.RunCommand(`login "${user}" "${password}"`);
 }
 
 /**
