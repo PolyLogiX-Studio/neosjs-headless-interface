@@ -169,9 +169,9 @@ class HeadlessInterface extends EventEmitter {
 	 * @param {String} text
 	 * @returns {Promise<String>}
 	 * @since 1.0.0
-	 * @version 1.0.1
+	 * @version 2.0.0
 	 */
-	Send(text) {
+	RunCommand(text) {
 		if (this.InternalEvents._events.HeadlessResponse) {
 			//TODO Race Conditions! Add Queue, Currently limited to 1 response at a time. System might need to be complex
 			this.emit(
