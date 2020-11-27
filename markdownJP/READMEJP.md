@@ -28,7 +28,7 @@
 Neos.js の開発を支援しませんか？
 [Patreon](https://www.patreon.com/PolyLogiX_VR)への寄付や、[KoFi](https://ko-fi.com/polylogix_studio)への寄付を検討してみてください。
 
-コードを投稿してみませんか？[投稿者ガイド](CONTRIBUTINGJP.md)をお読みください!
+コードを投稿してみませんか？[投稿者ガイド](markdownJP/CONTRIBUTINGJP.md)をお読みください!
 
 質問や支援については、[サポート課題](https://github.com/PolyLogiX-Studio/neosjs-headless-interface/issues/new/choose)を開くか、私たちの[FAQ](#faq)を確認した後、私たちの[Discord](https://discord.gg/6y2A4Pk)に参加してください。
 
@@ -40,4 +40,4 @@ Neos.js の開発を支援しませんか？
   </p>
   </div>
 
-[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](CONTRIBUTINGJP.md)
+[![Open Source Love svg3](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](markdownJP/CONTRIBUTINGJP.md)

@@ -16,7 +16,7 @@
   </p>
 </div>
 
-# [日本語](READMEJP.md)
+# [日本語](markdownJP/READMEJP.md)
 
 # Documentation
 
