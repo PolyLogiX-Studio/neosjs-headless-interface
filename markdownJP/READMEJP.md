@@ -21,7 +21,7 @@
 # ドキュメント
 
 ドキュメントの全文を見る [こちら](https://polylogix-studio.github.io/neosjs-headless-interface/)
-本ライブラリはJSDoc Intellisenseを使用しています。
+本ライブラリは JSDoc Intellisense を使用しています。
 
 # サポート
 

@@ -5,7 +5,7 @@
  * @returns {HeadlessInterface}
  * @see Parent Library: [Neos.js](https://github.com/PolyLogiX-Studio/Neos.js#readme)
  */
-
+const util = require("util");
 const { EventEmitter } = require("events");
 const path = require("path");
 //const fs = require("fs");
@@ -166,11 +166,28 @@ class HeadlessInterface extends EventEmitter {
 	}
 	/**
 	 * Send a command to the Headless Client
+	 * @deprecated 2.0.0
+	 * @instance
+	 * @param {String} text
+	 * @returns {Promise<String>}
+	 * @memberof HeadlessInterface
+	 */
+	Run(text) {
+		let run = util.deprecate(
+			(text) => this.RunCommand(text),
+			"Run() is Depricated, Use RunCommand()"
+		);
+		return run(text);
+	}
+
+	/**
+	 * Send a command to the Headless Client
 	 * @instance
 	 * @param {String} text
 	 * @returns {Promise<String>}
 	 * @since 1.0.0
 	 * @version 2.0.0
+	 * @async
 	 */
 	RunCommand(text) {
 		if (this.InternalEvents._events.HeadlessResponse) {
@@ -188,7 +205,6 @@ class HeadlessInterface extends EventEmitter {
 				if (!data.endsWith(">")) {
 					// Filter out Input text and wait for proper response
 					//TODO Add Timeout
-					console.log(data);
 					this.removeListener(
 						"HeadlessResponse",
 						this._events.HeadlessResponse
@@ -501,6 +517,7 @@ class CommandQueue {
 
 		return new Promise();
 	}
+	TryRunNext() {}
 	*/
 }
 module.exports = { HeadlessInterface };
