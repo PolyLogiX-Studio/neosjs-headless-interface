@@ -166,7 +166,7 @@ class HeadlessInterface extends EventEmitter {
 	}
 	/**
 	 * Send a command to the Headless Client
-	 * @deprecated 2.0.0
+	 * @deprecated since 2.0.1, Removing 2.2.0
 	 * @instance
 	 * @param {String} text
 	 * @returns {Promise<String>}
@@ -175,7 +175,7 @@ class HeadlessInterface extends EventEmitter {
 	Run(text) {
 		let run = util.deprecate(
 			(text) => this.RunCommand(text),
-			"Run() is Depricated, Use RunCommand()"
+			"Run() is Depricated, Use RunCommand()."
 		);
 		return run(text);
 	}
