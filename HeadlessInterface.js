@@ -79,11 +79,21 @@ class HeadlessInterface extends EventEmitter {
 		} else {
 			this.NeosVR = headlessPath;
 		}
-		this.Queue = new CommandQueue(this);
+		this.Queue = [];
+		this.CommandRunning = false;
 		this.InternalEvents = new EventEmitter();
 		this.InternalEvents.setMaxListeners(1);
+		this.InternalEvents.on("HeadlessResponse", (message) => {
+			if (this.Queue.length > 0) {
+				let Command = this.Queue.shift();
+				Command.Resolve(message);
+				this.CommandRunning = false;
+				this.RunQueue();
+			}
+		});
 		this.NeosVR.stdout.on("data", (data) => {
 			var message = data.toString();
+			if (message.trim().endsWith(">")) return; //Ignore Input message
 			if (message.startsWith("World running...")) {
 				this.State.Starting = false;
 				if (!this.State.Running) {
@@ -123,6 +133,32 @@ class HeadlessInterface extends EventEmitter {
 	 */
 	RunCommand(text) {
 		return this.AddQueue(text);
+	}
+	/**
+	 * Add event to queue
+	 * @returns {Promise<String>}
+	 * @private
+	 * @param {string} cmd
+	 * @memberof HeadlessInterface
+	 */
+	AddQueue(Cmd) {
+		let response = new Promise((Resolve) => {
+			this.Queue.push({ Cmd, Resolve });
+			this.RunQueue();
+		});
+		return response;
+	}
+	/**
+	 * Run the event queue
+	 * @private
+	 * @memberof HeadlessInterface
+	 */
+	RunQueue() {
+		if (this.CommandRunning) return; // Command In Progress
+		if (this.Queue.length == 0) return; // No Commands Queued
+		this.CommandRunning = true;
+		let Command = this.Queue[0];
+		this.NeosVR.stdin.write(Command.Cmd + "\n");
 	}
 	/**
 	 * Can the headless client send another command right now?
