@@ -169,7 +169,7 @@ class HeadlessInterface extends EventEmitter {
 	 * @deprecated 2.1.0
 	 */
 	get CanSend() {
-		return !this.CommandRunning
+		return !this.CommandRunning;
 	}
 
 	/**
