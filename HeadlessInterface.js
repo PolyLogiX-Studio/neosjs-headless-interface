@@ -130,9 +130,10 @@ class HeadlessInterface extends EventEmitter {
 	 * @instance
 	 * @memberof HeadlessInterface
 	 * @since 1.0.0
+	 * @deprecated 2.1.0
 	 */
 	get CanSend() {
-		return this.InternalEvents._events.HeadlessResponse == null;
+		return !this.CommandRunning
 	}
 
 	/**
