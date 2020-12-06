@@ -111,6 +111,19 @@ class HeadlessInterface extends EventEmitter {
 			this.emit("message", message);
 		});
 	}
+
+	/**
+	 * Send a command to the Headless Client
+	 * @instance
+	 * @param {String} text
+	 * @returns {Promise<String>}
+	 * @since 1.0.0
+	 * @version 2.0.0
+	 * @async
+	 */
+	RunCommand(text) {
+		return this.AddQueue(text);
+	}
 	/**
 	 * Can the headless client send another command right now?
 	 * @readonly
@@ -178,43 +191,6 @@ class HeadlessInterface extends EventEmitter {
 			"Run() is Depricated, Use RunCommand()."
 		);
 		return run(text);
-	}
-
-	/**
-	 * Send a command to the Headless Client
-	 * @instance
-	 * @param {String} text
-	 * @returns {Promise<String>}
-	 * @since 1.0.0
-	 * @version 2.0.0
-	 * @async
-	 */
-	RunCommand(text) {
-		if (this.InternalEvents._events.HeadlessResponse) {
-			//TODO Race Conditions! Add Queue, Currently limited to 1 response at a time. System might need to be complex
-			this.emit(
-				"error",
-				"Tried Calling .Send while another command was processing, This Error is to prevent a Race Condition"
-			);
-			return new Promise((resolve) => {
-				resolve("Error, Command Not Sent. Race Condition");
-			});
-		}
-		let response = new Promise((Resolve) =>
-			this.InternalEvents.on("HeadlessResponse", function (data) {
-				if (!data.endsWith(">")) {
-					// Filter out Input text and wait for proper response
-					//TODO Add Timeout
-					this.removeListener(
-						"HeadlessResponse",
-						this._events.HeadlessResponse
-					);
-					Resolve(data);
-				}
-			})
-		);
-		this.NeosVR.stdin.write(text + "\n");
-		return response;
 	}
 	/**
 	 * Login to an account
