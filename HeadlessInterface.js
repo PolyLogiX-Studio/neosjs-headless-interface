@@ -499,25 +499,4 @@ class HeadlessInterface extends EventEmitter {
 		return this.RunCommand(`saveConfig${filename ? " " + filename : ""}`);
 	}
 }
-/**
- *
- * @private
- * @class CommandQueue
- */
-class CommandQueue {
-	constructor(HeadlessInterface) {
-		this.HeadlessInterface = HeadlessInterface;
-		this.Queue = [];
-		this.Promises = [];
-		this.InternalClock = null; //TODO internal timer
-	}
-	/*
-	Add(Command) {
-		var context = this; //Passing into ES6
-
-		return new Promise();
-	}
-	TryRunNext() {}
-	*/
-}
 module.exports = { HeadlessInterface };
