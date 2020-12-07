@@ -47,42 +47,58 @@ class HeadlessInterface extends EventEmitter {
 		if (typeof headlessPath == "string") {
 			if (process.platform === "win32") {
 				//Windows
-				this.NeosVR = require("child_process").spawn(
-					path.join(headlessPath, "Neos.exe"),
-					[
-						"--config",
-						configPathRelative
-							? configPathRelative
-							: path.join(headlessPath, "Config/Config.json"),
-					],
-					{
-						windowsHide: false,
-						cwd: headlessPath /* Folder to Neos Headless For Binaries*/,
-					}
-				);
+				Object.defineProperty(this, "NeosVR", {
+					value: require("child_process").spawn(
+						path.join(headlessPath, "Neos.exe"),
+						[
+							"--config",
+							configPathRelative
+								? configPathRelative
+								: path.join(headlessPath, "Config/Config.json"),
+						],
+						{
+							windowsHide: false,
+							cwd: headlessPath /* Folder to Neos Headless For Binaries*/,
+						}
+					),
+					enumerable: false,
+				});
 			} else {
 				//Linux requires Mono
-				this.NeosVR = require("child_process").spawn(
-					"mono",
-					[
-						path.join(headlessPath, "Neos.exe"),
-						"--config",
-						configPathRelative
-							? configPathRelative
-							: path.join(headlessPath, "/Config/Config.json"),
-					],
-					{
-						windowsHide: true,
-						cwd: headlessPath /* Folder to Neos Headless For Binaries*/,
-					}
-				);
+				Object.defineProperty(this, "NeosVR", {
+					value: require("child_process").spawn(
+						"mono",
+						[
+							path.join(headlessPath, "Neos.exe"),
+							"--config",
+							configPathRelative
+								? configPathRelative
+								: path.join(headlessPath, "/Config/Config.json"),
+						],
+						{
+							windowsHide: true,
+							cwd: headlessPath /* Folder to Neos Headless For Binaries*/,
+						}
+					),
+					enumerable: false,
+				});
 			}
 		} else {
-			this.NeosVR = headlessPath;
+			Object.defineProperty(this, "NeosVR", {
+				value: headlessPath,
+				enumerable: false,
+			});
 		}
-		this.Queue = [];
-		this.CommandRunning = false;
-		this.InternalEvents = new EventEmitter();
+		Object.defineProperty(this, "Queue", { value: [], enumerable: false });
+		Object.defineProperty(this, "CommandRunning", {
+			value: false,
+			enumerable: false,
+			writable: true,
+		});
+		Object.defineProperty(this, "InternalEvents", {
+			value: new EventEmitter(),
+			enumerable: false,
+		});
 		this.InternalEvents.setMaxListeners(1);
 		this.InternalEvents.on("HeadlessResponse", (message) => {
 			if (this.Queue.length > 0) {
