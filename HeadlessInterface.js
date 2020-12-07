@@ -148,6 +148,18 @@ class HeadlessInterface extends EventEmitter {
 	StartLog() {
 		return this.RunCommand("log");
 	}
+	/**
+	 * Exit Async Logging Mode
+	 * @instance
+	 * @since 2.2.0
+	 * @returns {Promise<String>}
+	 * @memberof HeadlessInterface
+	 * @async
+	 */
+	ExitLog() {
+		return this.RunCommand("");
+	}
+	/**
 	 * Add event to queue
 	 * @returns {Promise<String>}
 	 * @private
