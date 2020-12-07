@@ -31,10 +31,10 @@ class HeadlessInterface extends EventEmitter {
 		super();
 		this.State = {
 			Running: false,
-			Ready:false,
+			Ready: false,
 			Starting: true,
 			CompatibilityHash: null,
-			MachineID:null,
+			MachineID: null,
 			log: false,
 			logMsg: 0,
 			sessionId: null,
@@ -111,14 +111,16 @@ class HeadlessInterface extends EventEmitter {
 		});
 		this.NeosVR.stdout.on("data", (data) => {
 			var message = data.toString();
-			message = message.replace(/\r\n/g,"")
+			message = message.replace(/\r\n/g, "");
 			if (message.trim().endsWith(">")) return; //Ignore Input message
 			if (!this.State.Ready) {
 				if (message.startsWith("Compatibility Hash: ")) {
-					this.State.CompatibilityHash = message.substring("Compatibility Hash: ".length)
+					this.State.CompatibilityHash = message.substring(
+						"Compatibility Hash: ".length
+					);
 				}
 				if (message.startsWith("MachineID: ")) {
-					this.State.MachineID = message.substring("MachineID: ".length)
+					this.State.MachineID = message.substring("MachineID: ".length);
 				}
 				if (message.startsWith("World running...")) {
 					this.State.Starting = false;
@@ -132,7 +134,7 @@ class HeadlessInterface extends EventEmitter {
 							 * @property {String} sessionId SessionId of the started world
 							 * @memberof HeadlessInterface
 							 */
-							this.State.Ready = true
+							this.State.Ready = true;
 							this.emit("ready", sessionId);
 						});
 					}
