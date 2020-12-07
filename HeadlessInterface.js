@@ -94,6 +94,7 @@ class HeadlessInterface extends EventEmitter {
 		});
 		this.NeosVR.stdout.on("data", (data) => {
 			var message = data.toString();
+			message = message.replace(/\r\n/g,"")
 			if (message.trim().endsWith(">")) return; //Ignore Input message
 			if (!this.State.Ready) {
 				if (message.startsWith("Compatibility Hash: ")) {
