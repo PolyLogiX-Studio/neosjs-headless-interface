@@ -135,6 +135,19 @@ class HeadlessInterface extends EventEmitter {
 		return this.AddQueue(text);
 	}
 	/**
+	 * Enter Async Extended Logging Mode
+	 * Use .on("message", ()=>{}) to get outputs.
+	 * Commands can not run properly while in logging mode. (Yet)
+	 * @see HeadlessInterface#message
+	 * @instance
+	 * @since 2.2.0
+	 * @returns {Promise<String>}
+	 * @memberof HeadlessInterface
+	 * @async
+	 */
+	StartLog() {
+		return this.RunCommand("log");
+	}
 	 * Add event to queue
 	 * @returns {Promise<String>}
 	 * @private
