@@ -31,6 +31,7 @@ class HeadlessInterface extends EventEmitter {
 		super();
 		this.State = {
 			Running: false,
+			Ready:false,
 			Starting: true,
 			CompatibilityHash: null,
 			MachineID:null,
@@ -119,24 +120,25 @@ class HeadlessInterface extends EventEmitter {
 				if (message.startsWith("MachineID: ")) {
 					this.State.MachineID = message.substring("MachineID: ".length)
 				}
-			if (message.startsWith("World running...")) {
-				this.State.Starting = false;
-				if (!this.State.Running) {
-					this.State.Running = true;
-					this.sessionId.then((sessionId) => {
-						/**
-						 * Fires when the headless client is Ready
-						 * @event HeadlessInterface#ready
-						 * @type {String} SessionId
-						 * @property {String} sessionId SessionId of the started world
-						 * @memberof HeadlessInterface
-						 */
-						this.emit("ready", sessionId);
-					});
+				if (message.startsWith("World running...")) {
+					this.State.Starting = false;
+					if (!this.State.Running) {
+						this.State.Running = true;
+						this.sessionId.then((sessionId) => {
+							/**
+							 * Fires when the headless client is Ready
+							 * @event HeadlessInterface#ready
+							 * @type {String} SessionId
+							 * @property {String} sessionId SessionId of the started world
+							 * @memberof HeadlessInterface
+							 */
+							this.State.Ready = true
+							this.emit("ready", sessionId);
+						});
+					}
 				}
 			}
 			this.InternalEvents.emit("HeadlessResponse", message);
-
 			/**
 			 * @event HeadlessInterface#message
 			 * @type {String}
