@@ -20,6 +20,7 @@ class HeadlessInterface extends EventEmitter {
 	 *
 	 * @param {String | 'child_process'} headlessPath
 	 * @param {String} [configPathRelative]
+	 * @param {Object | Array<String>} [launchParameters]
 	 * @param {{SafeReady:1000, Events: false, sessionIdAttempts:15}} [options]
 	 * @example const { HeadlessInterface } = require("neosjs-headless-interface");
 	 * const NeosVR = new HeadlessInterface()
@@ -27,8 +28,19 @@ class HeadlessInterface extends EventEmitter {
 	 * 	NeosVR.Send("invite bombitmanbomb").then((Response)=>console.log(Response)) // "Invite Sent!"
 	 * })
 	 */
-	constructor(headlessPath, configPathRelative, options) {
+	constructor(
+		headlessPath,
+		configPathRelative,
+		launchParameters = [],
+		options
+	) {
 		super();
+		/**
+		 * Only Guarenteed to be filled after HeadlessInterface#ready has fired
+		 * @memberof HeadlessInterface
+		 * @instance
+		 * @property {{Running: Boolean,Ready: Boolean,Starting: Boolean,CompatibilityHash: String,MachineID: String,log: Boolean,logMsg: Number,sessionId: String,sessionIdAttempts: Number}} State
+		 */
 		this.State = {
 			Running: false,
 			Ready: false,
@@ -40,6 +52,14 @@ class HeadlessInterface extends EventEmitter {
 			sessionId: null,
 			sessionIdAttempts: 0,
 		};
+		if (!Array.isArray(launchParameters)) {
+			let tempParameters = [];
+			for (let key of Object.keys(launchParameters)) {
+				tempParameters.push(key);
+				tempParameters.push(launchParameters[key]);
+			}
+			launchParameters = tempParameters;
+		}
 		this.Options = options || {};
 		if (this.Options.SafeReady == null) this.Options.SafeReady = 1000;
 		if (this.Options.Events == null) this.Options.Events = false;
@@ -56,7 +76,7 @@ class HeadlessInterface extends EventEmitter {
 							configPathRelative
 								? configPathRelative
 								: path.join(headlessPath, "Config/Config.json"),
-						],
+						].concat(launchParameters),
 						{
 							windowsHide: false,
 							cwd: headlessPath /* Folder to Neos Headless For Binaries*/,
@@ -75,7 +95,7 @@ class HeadlessInterface extends EventEmitter {
 							configPathRelative
 								? configPathRelative
 								: path.join(headlessPath, "/Config/Config.json"),
-						],
+						].concat(launchParameters),
 						{
 							windowsHide: true,
 							cwd: headlessPath /* Folder to Neos Headless For Binaries*/,
