@@ -1,6 +1,6 @@
 {
 	"name": "neosjs-headless-interface",
-	"version": "2.2.1",
+	"version": "2.3.0",
 	"description": "Headless Interface for NeosVR",
 	"main": "HeadlessInterface.js",
 	"scripts": {
