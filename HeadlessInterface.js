@@ -511,23 +511,27 @@ class HeadlessInterface extends EventEmitter {
 	 * Ban the given user
 	 * @instance
 	 * @memberof HeadlessInterface
-	 * @param {String} user Username
+	 * @param {String} user Username OR UserId
 	 * @since 2.0.0
+	 * @version 2.3.1
 	 * @returns {Promise<String>}
 	 */
 	Ban(user) {
-		return this.RunCommand(`ban "${user}"`);
+		if (user.startsWith("U-")) return this.RunCommand(`banById "${user}"`);
+		return this.RunCommand(`banByName "${user}"`);
 	}
 	/**
 	 * Unban the given user
 	 * @instance
 	 * @memberof HeadlessInterface
-	 * @param {String} user Username
+	 * @param {String} user Username OR UserId
 	 * @since 2.0.0
+	 * @version 2.3.1
 	 * @returns {Promise<String>}
 	 */
 	Unban(user) {
-		return this.RunCommand(`unban "${user}"`);
+		if (user.startsWith("U-")) return this.RunCommand(`unbanById "${user}"`);
+		return this.RunCommand(`unbanByName "${user}"`);
 	}
 	/**
 	 * Respawn the given user
