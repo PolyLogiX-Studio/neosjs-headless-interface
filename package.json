@@ -1,12 +1,12 @@
 {
 	"name": "neosjs-headless-interface",
-	"version": "2.3.1",
+	"version": "2.3.2",
 	"description": "Headless Interface for NeosVR",
 	"main": "HeadlessInterface.js",
 	"scripts": {
 		"lint": "prettier --use-tabs --write . && eslint -c .eslintrc.json --fix .",
 		"document": "documentation build HeadlessInterface.js -f html -o docs --config .documentation.yml --sort-order alpha",
-		"prepare": "npm run document && npm run lint"
+		"ready": "npm run document && npm run lint"
 	},
 	"repository": {
 		"type": "git",
@@ -18,7 +18,7 @@
 		"url": "https://github.com/PolyLogiX-Studio/neosjs-headless-interface/issues"
 	},
 	"peerDependencies": {
-		"@bombitmanbomb/neosjs": "^1.8.0"
+		"@bombitmanbomb/neosjs": "^1.9.0"
 	},
 	"devDependencies": {
 		"documentation": "^13.1.0",
