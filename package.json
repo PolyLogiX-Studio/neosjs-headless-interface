@@ -22,7 +22,7 @@
 	},
 	"devDependencies": {
 		"documentation": "^13.1.0",
-		"eslint": "^7.12.1",
+		"eslint": "^8.0.0",
 		"prettier": "^2.1.2"
 	},
 	"peerDependenciesMeta": {
